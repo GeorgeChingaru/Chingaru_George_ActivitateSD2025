@@ -36,7 +36,9 @@ int main() {
 	printf("Continut existent la adresa din variabila pointer ct pci=%u\n", *pci);
 	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
 	printf("Continut (valoare intreaga) variabila vint=%u\n", vint);
-
+	//ideea este ca nu poti modifica adresa pointerului, ea ramane constanta
+	//pci=&j //! eroare de compilare
+	
 	//pointer la int constant
 	int const* pint;
 	pint= &vint;
@@ -48,7 +50,22 @@ int main() {
 	printf("Continut existent la adresa din variabila pointer  pint=%u\n", *pint);
 	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
 	printf("Continut (valoare intreaga) variabila vint=%u\n", vint);
-	/////////////////////////////////////////////
+	//ideea este ca nu poti modifica valoarea catre care  pointeaza, ea ramane constanta
+	//*pint=vint+5; //! eroare de compilare
+
+	//pointer constant la int constant
+	const int* const pint2 = &vint;
+
+	printf("///////////////////////////////////////\n");
+	printf("Adrese si continuturi initiale ale variabilelor vint si  pointerului pint2:\n");
+	printf("Adresa segment stack un variabila pointer const la int const pint2 a fost alocata la compilare = 0x%p\n", &pint2);
+	printf("Adresa segment stack continuta de variabila pint2=0x%p\n", pint2);
+	printf("Continut existent la adresa din variabila pointer  pint2=%u\n", *pint);
+	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
+	printf("Continut (valoare intreaga) variabila vint=%u\n", vint);
+	//ideea este ca nu poti modifica valoarea catre care  pointeaza si nici adresa , ambele ramanand constanta
+	//*pint2=vint+5; pint2=&j; //! eroare de compilare
+
 
 		return 0;
 }
