@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<malloc.h>
 #include<string.h>
+#define VECTOR_SIZE 10
 int main() {
 	unsigned char x = 103;// variabila date tip primar, zona memorie 1 byte ([0,255])
 
@@ -66,6 +67,23 @@ int main() {
 	//ideea este ca nu poti modifica valoarea catre care  pointeaza si nici adresa , ambele ramanand constanta
 	//*pint2=vint+5; pint2=&j; //! eroare de compilare
 
+	// adresa variabila tip vector
+
+	unsigned char vx[VECTOR_SIZE]; //Variabila de tip vector; Vector_size elemente alocate; avand lungimea 1 byte
+	px = vx;// scriere adresa de segment stack a lui vx in px
+	for (unsigned char i = 0; i < sizeof(vx); i++)
+		px[i] = x + i; // px[i]<-->*(px+i)
+
+	printf("///////////////////////////////////////\n");
+	printf("Adrese si continuturi initiale ale variabilelor vx si  pointerului px dupa init elem:\n");
+	printf("Adresa segment stack un variabila px a fost alocata la compilare = 0x%p\n", &px);
+	printf("Adresa segment stack continuta de variabila px=0x%p\n", px);
+	printf("Adresa segment stack unde variabila vx a fost alocata la compilare = 0x%p\n", &vx);
+
+	for (unsigned char i = 0; i < sizeof(vx); i++)
+	{
+		printf("Element vx[%u]: Adresa segment stack = 0x%p, Continut (val intreaga) =%u\n", i + 1, px + i, px[i]);
+	}
 
 		return 0;
 }
