@@ -84,6 +84,42 @@ int main() {
 	{
 		printf("Element vx[%u]: Adresa segment stack = 0x%p, Continut (val intreaga) =%u\n", i + 1, px + i, px[i]);
 	}
+	//
+
+	///utilizare string-uri
+	char str[] = "Aplicatie in C";
+	
+	unsigned char* ppc = (unsigned char*)str;
+
+	printf("///////////////////////////////////////\n");
+	printf("Adrese si continuturi initiale ale variabilelor str si ppc dupa init elem:\n");
+	printf("Adresa segment stack un variabila ppc a fost alocata la compilare = 0x%p\n", &ppc);
+	printf("Adresa segment stack continuta de variabila ppc=0x%p\n", ppc);
+	printf("Adresa segment stack unde variabila str a fost alocata la compilare = 0x%p\n", &str);
+	printf("Dimensiune vector=%u elemente, Lungime sir caract = %d caract/simb, Continut (string ascii)variabila str/ppc =%s\n", sizeof(str), strlen(str), str);
+	
+	printf("Continut (format hexa) elemente vector str/ppc\n");
+	for (unsigned char i = 0; i < sizeof(str); i++)
+	{
+		printf("Element str[%u]: 0x%02X\n",i+1,ppc[i]);
+
+	}
+
+	str[strlen(str)] = 1;
+
+	printf("Adrese si continuturi initiale ale variabilelor str si ppc dupa rescrierea terminatorului sir de caract:\n");
+	printf("Adresa segment stack un variabila ppc a fost alocata la compilare = 0x%p\n", &ppc);
+	printf("Adresa segment stack continuta de variabila ppc=0x%p\n", ppc);
+	printf("Adresa segment stack unde variabila str a fost alocata la compilare = 0x%p\n", &str);
+	printf("Dimensiune vector=%u elemente, Lungime sir caract = %d caract/simb, Continut (string ascii)variabila str/ppc =%s\n", sizeof(str), strlen(str), str);
+
+	printf("Continut (format hexa) elemente vector str/ppc\n");
+	for (unsigned char i = 0; i < sizeof(str); i++)
+	{
+		printf("Element str[%u]: 0x%02X\n", i + 1, ppc[i]);
+
+	}
+
 
 		return 0;
 }
