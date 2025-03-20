@@ -153,6 +153,88 @@ int main() {
 			i, vpi + i, vpi[i]);
 	}
 
+	// ///
+	 
+	 //// alocarea vector la run-time
+	unsigned char n = (unsigned char)(strlen(str) - 2); // lungime determinata de existenta unui byte cu valoarea 0
+
+	px = (unsigned char*)malloc(n * sizeof(unsigned char));
+
+	for (char i = 0; i < n; i++)
+	{
+		px[i] = ppc[i] + i;
+	}
+
+	printf("//////////////////////////////////////////////////\n");
+	printf("Adrese si continuturi ale variabilelor px si n dupa alocare si initializare memorie heap:\n");
+
+	printf("Adresa segment stack unde variabila px a fost alocata la compilare = 0x%p\n", &px);
+	printf("Adresa segment heap continuta de variabila px = 0x%p\n", px);
+	printf("Continut n (dimensiune vector) = %u elemente\n", n);
+
+	for (char i = 0; i < n; i++)
+	{
+		printf("Element px[%u]: %u\n", i + 1, px[i]);
+	}
+
+	// dezalocare mem heap
+	free(px);
+
+	////////// mapare pointer peste o variabila existenta la nivel de byte
+	int z = 0x7511DD80;
+	unsigned char* pz = NULL;
+
+	pz = (unsigned char*)&z;
+
+	printf("//////////////////////////////////////////////////\n");
+	printf("Adrese si continuturi initiale ale variabilelor z si pz:\n");
+	printf("Adresa segment stack unde variabila pz a fost alocata la compilare = 0x%p\n", &pz);
+	printf("Adresa segment stack continuta de variabila pz = 0x%p\n", pz);
+	printf("Adresa segment stack unde variabila z a fost alocata la compilare = 0x%p\n", &z);
+	printf("Continut (valoare intreaga) variabila z = %d\n", z);
+	printf("Continut (format hexa BIG-ENDIAN) variabila z = 0x");
+
+	// parsare byte cu byte a grupului (int = 4 bytes) alocat pentru variabila 
+	// z la nivel fizic (reprezentare BIG ENDIAN)
+	for (char i = 0; i < sizeof(int); i++)
+		printf("%02X", pz[i]);
+
+	printf("\n");
+
+	// parsare byte cu byte a grupului (int = 4 bytes) alocat pentru variabila 
+	// z la nivel logic (reprezentare LITTLE ENDIAN)
+	printf("Continut (format hexa LITTLE-ENDIAN) variabila z = 0x");
+
+	for (char i = sizeof(int) - 1; i >= 0; i--)
+		printf("%02X", pz[i]);
+
+	printf("\n");
+
+	pz[2] = 0x89; // modificare byte cu offset 2 la nivel fizic (continutul anterior este 0x11, byte-ul 2 din initializarea lui z)
+	// deoarece stocarea datelor la nivel fizic este conform LITTLE ENDIAN
+
+	printf("Adrese si continuturi dupa modificare ale variabilelor z si pz:\n");
+	printf("Adresa segment stack unde variabila pz a fost alocata la compilare = 0x%p\n", &pz);
+	printf("Adresa segment stack continuta de variabila pz = 0x%p\n", pz);
+	printf("Adresa segment stack unde variabila z a fost alocata la compilare = 0x%p\n", &z);
+	printf("Continut (valoare intreaga) variabila z = %d\n", z);
+	printf("Continut (format hexa BIG-ENDIAN) variabila z = 0x");
+
+	for (char i = 0; i < sizeof(int); i++)
+		printf("%02X", pz[i]);
+
+	printf("\n");
+
+	printf("Continut (format hexa LITTLE-ENDIAN) variabila z = 0x");
+
+	for (char i = sizeof(int) - 1; i >= 0; i--)
+		printf("%02X", pz[i]);
+
+	printf("\n");
+
+	return 0;
+
+
 
 
 
