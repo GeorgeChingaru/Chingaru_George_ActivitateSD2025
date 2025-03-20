@@ -119,6 +119,41 @@ int main() {
 		printf("Element str[%u]: 0x%02X\n", i + 1, ppc[i]);
 
 	}
+	///
+
+	//utilizare vector de pointeri
+	int* vpi[VECTOR_SIZE];
+	for (unsigned char i = 0; i < VECTOR_SIZE; i++)
+	{
+		vpi[i] = &vint;
+	}
+
+	printf("//////////////////////////////////////////////////\n");
+	printf("Adrese si continuturi ale variabilelor vint si vpi dupa initializarea elementelor din vpi:\n");
+
+	printf("Adresa segment stack unde variabila vector vpi a fost alocata la compilare = 0x%p\n", &vpi);
+	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
+
+	for (unsigned char i = 0; i < VECTOR_SIZE; i++)
+	{
+		printf("Element vpi[%u]: Adresa segment stack = 0x%p, Continut (adresa segment stack variabila vint) = 0x%p\n",
+			i, vpi + i, vpi[i]);
+	}
+
+	vpi[1] = vpi[0] + 1; // aritmetica de pointeri aplicata pentru int (&vint + 1)
+
+	printf("Adrese si continuturi ale variabilelor vint si vpi dupa modificarea elementului vpi[1]:\n");
+
+	printf("Adresa segment stack unde variabila vector vpi a fost alocata la compilare = 0x%p\n", &vpi);
+	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
+
+	for (unsigned char i = 0; i < VECTOR_SIZE; i++)
+	{
+		printf("Element vpi[%u]: Adresa segment stack = 0x%p, Continut (adresa segment stack) = 0x%p\n",
+			i, vpi + i, vpi[i]);
+	}
+
+
 
 
 		return 0;
