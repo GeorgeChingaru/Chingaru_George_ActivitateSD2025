@@ -28,7 +28,7 @@ int main() {
 	///pointer constant la int
 	int vint = 13, j = 9;
 	int* const pci = &vint; // obligatoriu, initializarea pci la mom declararii
-
+	
 	printf("///////////////////////////////////////\n");
 	printf("Adrese si continuturi initiale ale variabilelor vint si pci:\n");
 	printf("Adresa segment stack un variabila pointer ct pci a fost alocata la compilare = 0x%p\n", &pci);
@@ -37,6 +37,18 @@ int main() {
 	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
 	printf("Continut (valoare intreaga) variabila vint=%u\n", vint);
 
+	//pointer la int constant
+	int const* pint;
+	pint= &vint;
+
+	printf("///////////////////////////////////////\n");
+	printf("Adrese si continuturi initiale ale variabilelor vint si  pointerului pint:\n");
+	printf("Adresa segment stack un variabila pointer la int const pint a fost alocata la compilare = 0x%p\n", &pint);
+	printf("Adresa segment stack continuta de variabila pint=0x%p\n", pint);
+	printf("Continut existent la adresa din variabila pointer  pint=%u\n", *pint);
+	printf("Adresa segment stack unde variabila vint a fost alocata la compilare = 0x%p\n", &vint);
+	printf("Continut (valoare intreaga) variabila vint=%u\n", vint);
+	/////////////////////////////////////////////
 
 		return 0;
 }
