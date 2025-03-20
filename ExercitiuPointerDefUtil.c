@@ -15,8 +15,14 @@ int main() {
 	printf("Continut existent la adresa din variabila px=%u\n", *px);
 	printf("Adresa segment stack unde variabila x a fost alocata la compilare = 0x%p\n", &x);
 	printf("Continut (valoare intreaga) variabila x=%u\n", x);
-
-
-
+///
+	*px = x + 3;//modificarea indirecta a variabilei x
+	printf("Adrese si continuturi initiale ale variabilelor x si px dupa modificarea continutului lui x:\n");
+	printf("Adresa segment stack unde variabila px a fost alocata la compilare = 0x%p\n", &px);
+	printf("Adresa segment stack continuta de variabila px=0x%p\n", px);
+	printf("Continut existent la adresa din variabila px=%u\n", *px);
+	printf("Adresa segment stack unde variabila x a fost alocata la compilare = 0x%p\n", &x);
+	printf("Continut (valoare intreaga) variabila x=%u\n", x);
+	///
 	return 0;
 }
