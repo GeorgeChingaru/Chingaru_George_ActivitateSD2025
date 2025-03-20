@@ -1,4 +1,4 @@
-//#include "headers.h" pt extern
+#include<headers.h>
 #include<stdio.h>
 //-------------STATIC------------//
 int f() {
@@ -7,6 +7,9 @@ int f() {
 	return x;
 }
 //---------------------------------//
+//pt extern
+int i;
+//------
 int main()
 { 
 	//AUTO//
@@ -58,6 +61,13 @@ int main()
 	};
 
 	printf("vreg= 0x%08X (%d)\n",vreg, vreg);
+
+	// EXTERN
+
+	 i=3;
+
+	 f();
+	 printf("%d\n", i);
 
 	return 0;
 }
