@@ -139,9 +139,43 @@ float calculeazaPretMediu(/*lista de masini*/ Nod* lista) {
 	return (count > 0) ? sum / count : 0;
 }
 
-void stergeMasiniDinSeria(/*lista masini*/ char serieCautata) {
+void stergeMasiniDinSeria(Nod** cap, char serieCautata) {
 	//sterge toate masinile din lista care au seria primita ca parametru.
 	//tratati situatia ca masina se afla si pe prima pozitie, si pe ultima pozitie
+	
+	while ((*cap) && (*cap)->info.serie == serieCautata) {
+		Nod* aux = *cap;
+		(*cap) = aux->urm;
+		if (aux->info.numeSofer) {
+			free(aux->info.numeSofer);
+		}
+		if (aux->info.model) {
+			free(aux->info.model);
+		}
+		free(aux);
+	}
+	if ((*cap)) {
+		Nod* p = *cap;
+		while (p) {
+			while (p->urm && p->urm->info.serie != serieCautata) {
+				p = p->urm;
+			}
+			if (p->urm) {
+				Nod* aux = p->urm;
+				p->urm = aux->urm;
+				if (aux->info.numeSofer) {
+					free(aux->info.numeSofer);
+				}
+				if (aux->info.model) {
+					free(aux->info.model);
+				}
+				free(aux);
+			}
+			else {
+				p = NULL;
+			}
+		}
+	}
 }
 
 float calculeazaPretulMasinilorUnuiSofer(/*lista masini*/Nod* lista, const char* numeSofer) {
@@ -185,6 +219,12 @@ int main() {
 	printf("%5.2f \n", calculeazaPretMediu(cap));
 	printf("%5.2f \n", calculeazaPretulMasinilorUnuiSofer(cap, "Ionescu"));
 	printf("%s \n", getCeaMaiScumpaMasina(cap));
+	printf("\nStergere seria A\n");
+	stergeMasiniDinSeria(&cap, 'A');
+	afisareListaMasini(cap);
+	printf("\nStergere seria B\n");
+	stergeMasiniDinSeria(&cap, 'B');
+	afisareListaMasini(cap);
 	dezalocareListaMasini(&cap);
 	return 0;
 }
