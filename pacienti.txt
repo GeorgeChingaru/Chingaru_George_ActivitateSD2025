@@ -1,0 +1,7 @@
+1,Manole Florin,47,M,1
+2,Chingaru Maria,80,F,0
+3,Vulpoiu Alexia Valentina,21,F,0
+4,Sora Mihai,106,M,4
+5,Berbec Silviu,66,M,3
+6,Castana Ioan,15,M,2
+7,Pricopie Casiana,69,F,4
