@@ -1,0 +1,7 @@
+Popescu Andrei,89.5,5,Romania
+Tanaka Hiroshi,95.0,6,Japonia
+Smith John,88.2,4,Canada
+Garcia Maria,93.1,6,Spania
+Ivanov Alexei,90.7,5,Rusia
+Chen Mei,97.3,7,China
+Ahmed Zain,85.6,3,Egipt
