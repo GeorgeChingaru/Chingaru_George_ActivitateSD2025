@@ -1,0 +1,10 @@
+Hamlet,210,1609,9.5
+O scrisoare pierduta,130,1884,8.9
+Romeo si Julieta,195,1597,9.8
+Steaua fara nume,120,1942,7.3
+Nunta lui Figaro,165,1784,8.6
+Livada de visini,140,1904,8.2
+O noapte furtunoasa,115,1879,9.1
+Take Ianke si Cadar,110,1932,8.4
+Moartea unui comis voiajor,150,1949,9.0
+Zaraza,105,1946,7.8
