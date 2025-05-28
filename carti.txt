@@ -1,0 +1,4 @@
+Povestea vietii,Elena Popescu,2005,45.5
+Basme romanesti,Ion Creanga,1980,30.0
+Enciclopedia lumii,Anonim,2012,120.75
+Abecedar,Maria Ionescu,1995,20.0
